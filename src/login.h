@@ -2,11 +2,14 @@
 #define _LOGIN_H_
 
 #include <ncurses.h>
+#include <string>
+
+using namespace std;
 
 class Login {
 private:
-	char id[100];
-	char pw[100];
+	string id;
+	string pw;
 
 public:
 	Login();

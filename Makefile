@@ -6,7 +6,7 @@ INC = /usr/include/ncursesw/
 LIBS = -lncursesw
 CXXFLAGS = -I $(INC) 
 
-SRCS = src/main.cpp src/shellter.cpp
+SRCS = src/mainFrame.cpp src/login.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 TARGET = shellter
