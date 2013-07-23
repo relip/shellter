@@ -14,7 +14,7 @@ private:
 public:
 	Login();
 
-	void logo();
+	void logo(int height, int width);
 
 	void start();
 
