@@ -14,6 +14,8 @@ private:
 public:
 	Login();
 
+	void logo();
+
 	void start();
 
 	void process();
