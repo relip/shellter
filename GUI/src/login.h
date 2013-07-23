@@ -5,11 +5,15 @@
 
 class Login {
 private:
+	char id[100];
+	char pw[100];
 
 public:
 	Login();
 
-	int start();
+	void start();
+
+	void process();
 
 	void join();
 
