@@ -4,33 +4,33 @@ Login::Login() {
 	// empty
 }
 
-void Login::logo(int LINES, int COLS) {
-	mvprintw((LINES - 8) / 2, (COLS - 36) / 2, "  ____  _          _ _ _            \n");
-	mvprintw((LINES - 8) / 2 + 1, (COLS - 36) / 2, " / ___|| |__   ___| | | |_ ___ _ __ \n");
-	mvprintw((LINES - 8) / 2 + 2, (COLS - 36) / 2, " \\___ \\| '_ \\ / _ \\ | | __/ _ \\ '__|\n");
-	mvprintw((LINES - 8) / 2 + 3, (COLS - 36) / 2, "  ___) | | | |  __/ | | ||  __/ |   \n");
-	mvprintw((LINES - 8) / 2 + 4, (COLS - 36) / 2, " |____/|_| |_|\\___|_|_|\\__\\___|_|   \n");
-	mvprintw((LINES - 8) / 2 + 5, (COLS - 36) / 2, "                                    \n");
+void Login::logo(int nLines, int nCols) {
+	mvprintw((nLines - 8) / 2, (nCols - 36) / 2, "  ____  _          _ _ _            \n");
+	mvprintw((nLines - 8) / 2 + 1, (nCols - 36) / 2, " / ___|| |__   ___| | | |_ ___ _ __ \n");
+	mvprintw((nLines - 8) / 2 + 2, (nCols - 36) / 2, " \\___ \\| '_ \\ / _ \\ | | __/ _ \\ '__|\n");
+	mvprintw((nLines - 8) / 2 + 3, (nCols - 36) / 2, "  ___) | | | |  __/ | | ||  __/ |   \n");
+	mvprintw((nLines - 8) / 2 + 4, (nCols - 36) / 2, " |____/|_| |_|\\___|_|_|\\__\\___|_|   \n");
+	mvprintw((nLines - 8) / 2 + 5, (nCols - 36) / 2, "                                    \n");
 }
 
 void Login::start() {
-	int COLS, LINES;
+	int nCols, nLines;
 	char szTempStr[999];
 
-	getmaxyx(stdscr, LINES, COLS);
+	getmaxyx(stdscr, nLines, nCols);
 	
 	/* Print logo */
-	logo(LINES, COLS);
+	this->logo(nLines, nCols);
 	
-	mvprintw((LINES - 8) / 2 + 6, COLS / 2 - 5, "Login\n");
+	mvprintw((nLines - 8) / 2 + 6, nCols / 2 - 5, "Login\n");
 	
-	mvprintw((LINES - 8) / 2 + 7, COLS / 2 - 8, "ID: ");
+	mvprintw((nLines - 8) / 2 + 7, nCols / 2 - 8, "ID: ");
 	refresh();
 	getstr(szTempStr);
 
 	this->id = szTempStr;
 	
-	mvprintw((LINES - 8) / 2 + 8, COLS / 2 - 14, "Password: ");
+	mvprintw((nLines - 8) / 2 + 8, nCols / 2 - 14, "Password: ");
 	refresh();
 	noecho();
 	getstr(szTempStr);

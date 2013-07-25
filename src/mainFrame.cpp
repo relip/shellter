@@ -1,4 +1,5 @@
 #include <iostream>
+#include "stageManager.h"
 #include "login.h"
 
 using namespace std;
