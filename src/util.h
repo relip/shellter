@@ -1,6 +1,22 @@
-#ifndef _UTIL_H_
-#define _UTIL_H_
+#pragma once
 
-#define NULL ((void*)0)
+static struct {
+	int width;
+	int height;
+} s_screen;
 
-#endif // _UTIL_H_
+inline int getScreenWidth(){
+	if (s_screen.width == 0)
+	{
+		getmaxyx(stdscr, s_screen.height, s_screen.width);
+	}
+	return s_screen.width;
+}
+
+inline int getScreenHeight(){
+	if (s_screen.height == 0)
+	{
+		getmaxyx(stdscr, s_screen.height, s_screen.width);
+	}
+	return s_screen.height;
+}

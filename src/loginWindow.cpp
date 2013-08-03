@@ -1,10 +1,10 @@
-#include "login.h"
+#include "loginWindow.h"
 
-Login::Login() {
+LoginWindow::LoginWindow() {
 	// empty
 }
 
-void Login::logo(int height, int width) {
+void LoginWindow::logo(int height, int width) {
 	mvprintw((height - 8) / 2, (width - 36) / 2, "  ____  _          _ _ _            \n");
 	mvprintw((height - 8) / 2 + 1, (width - 36) / 2, " / ___|| |__   ___| | | |_ ___ _ __ \n");
 	mvprintw((height - 8) / 2 + 2, (width - 36) / 2, " \\___ \\| '_ \\ / _ \\ | | __/ _ \\ '__|\n");
@@ -13,7 +13,7 @@ void Login::logo(int height, int width) {
 	mvprintw((height - 8) / 2 + 5, (width - 36) / 2, "                                    \n");
 }
 
-void Login::start() {
+bool LoginWindow::start() {
 	int height, width;
 	char szTempStr[999];
 
@@ -37,17 +37,22 @@ void Login::start() {
 
 	this->pw = szTempStr;
 
-	getch();
+	if(process(this->id, this->pw) == false) {
+
+	}
+
+	return true;
 }
 
-void Login::process() {
+bool LoginWindow::process(const string &id, const string &pw) {
+	
+	return true;
+}
+
+void LoginWindow::join() {
 	// empty
 }
 
-void Login::join() {
-	// empty
-}
-
-Login::~Login() {
+LoginWindow::~LoginWindow() {
 	// empty
 }

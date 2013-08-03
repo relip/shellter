@@ -1,28 +1,23 @@
-#ifndef _LOGIN_H_
-#define _LOGIN_H_
-
 #include <ncurses.h>
 #include <string>
 
 using namespace std;
 
-class Login {
+class LoginWindow {
 private:
 	string id;
 	string pw;
 
 public:
-	Login();
+	LoginWindow();
 
 	void logo(int height, int width);
 
-	void start();
+	bool start();
 
-	void process();
+	bool process(const string &id, const string &pw);
 
 	void join();
 
-	~Login();
+	~LoginWindow();
 };
-
-#endif // _LOGIN_H_
