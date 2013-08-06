@@ -1,24 +1,50 @@
 #include "menuWindow.h"
-#include "mainWindow.h"
 #include "util.h"
 
-MenuWindow::MenuWindow(MainWindow *parent) {
+MenuWindow::MenuWindow(Window *parent) {
 	_parent = parent;
-}
-
-bool MenuWindow::initWindow() {
-	_window = subwin(_parent->getWindow(), getScreenHeight(), 12, 0, 0);
-
-	drawWindow();
-	return true;
-}
-
-void MenuWindow::drawWindow() {
-	box(_window, ACS_VLINE, ACS_HLINE);
-	mvwprintw(_window, 2, 2, "타임라인");
-	wrefresh(_window);
+    _index = INDEX_PROFILE;
 }
 
 MenuWindow::~MenuWindow() {
-	// empty
 }
+
+bool MenuWindow::initWindow() {
+	_window = subwin(_parent->getWindow(), getScreenHeight(), 14, 0, 0);
+	drawWindow();
+	return true;
+}
+ 
+void MenuWindow::drawWindow() {
+    int left = _menuOffsetX;
+    static const char* arrMenuName[] = {
+        "Profile",      // INDEX_PROFILE,
+    	"TimeLine",     // INDEX_TIMELINE,
+		"Mention",      // INDEX_MENTION,
+		"Message",      // INDEX_MESSAGE,
+		"Favorite",     // INDEX_FAVORITE,
+		"List",         // INDEX_LIST,
+		"Search",       // INDEX_SEARCH,
+		"Setting",      // INDEX_SETTING,
+    };
+    
+    werase(_window);
+
+    box(_window, ACS_VLINE, ACS_HLINE);
+
+    for (int i = INDEX_PROFILE; i < MAX_INDEX; i++)
+    {
+        mvwprintw(_window, _menuOffsetY + i*2,  _menuOffsetX, arrMenuName[i]);
+    }
+    
+    mvwprintw(_window, _index*2+_menuOffsetY, 2, ">");
+
+    wrefresh(_window);
+}
+ 
+ 
+int MenuWindow::convIndexToInt(MenuWindow::EMENU_POINTER index) const
+{
+    return *(int*)&index;
+}
+

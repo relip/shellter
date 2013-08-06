@@ -1,24 +1,20 @@
 #pragma once
-#include <ncurses.h>
+#include "window.h"
 #include "menuWindow.h"
+#include "writeWindow.h"
+#include "streamWindow.h"
 
-class MainWindow {
+class MainWindow : public Window {
 private:
-	WINDOW *_window;
-	MenuWindow _menu;
+	MenuWindow _menuWnd;
+    WriteWindow _writeWnd;
+    StreamWindow _streamWnd;
 
 public:
 	MainWindow();
-
-	bool initWindow();
-
-	void drawWindow();
-
-	WINDOW *getWindow() const {
-		return _window;
-	}
-
-
-
 	~MainWindow();
+    
+    bool initWindow();
+    void drawWindow();
+    
 };

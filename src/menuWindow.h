@@ -1,11 +1,11 @@
 #pragma once
-#include <ncurses.h>
+#include "window.h"
+#include <vector>
+#include <string>
+using namespace std;
 
-class MainWindow;
-class MenuWindow {
+class MenuWindow : public Window {
 private:
-	WINDOW *_window;
-	MainWindow *_parent;
 	enum EMENU_POINTER {
 		INDEX_PROFILE,
 		INDEX_TIMELINE,
@@ -15,14 +15,19 @@ private:
 		INDEX_LIST,
 		INDEX_SEARCH,
 		INDEX_SETTING,
+        MAX_INDEX
 	} _index;
-
+    
+    int convIndexToInt(MenuWindow::EMENU_POINTER index) const;
+    
+    static const int _menuOffsetY = 2;
+    static const int _menuOffsetX = 4;
+    
 public:
-	MenuWindow(MainWindow *parent);
-
-	bool initWindow();
-
-	void drawWindow();
-
+	MenuWindow(Window *parent);
 	~MenuWindow();
+    
+    bool initWindow();
+    void drawWindow();
+
 };

@@ -1,18 +1,25 @@
-#include "menuWindow.h"
 #include "mainWindow.h"
-#include "stream.h"
-#include "write.h"
 #include "util.h"
 
-MainWindow::MainWindow() : _menu(this) {
+MainWindow::MainWindow() :
+    _menuWnd(this),
+    _writeWnd(this),
+    _streamWnd(this)
+{
 	// empty
+}
+
+MainWindow::~MainWindow() {
+    // empty
 }
 
 bool MainWindow::initWindow() {
 	_window = newwin(getScreenHeight(), getScreenWidth(), 0, 0);
 
 	drawWindow();
-	_menu.initWindow();
+    _menuWnd.initWindow();
+    _writeWnd.initWindow();
+    _streamWnd.initWindow();
 
 	return true;
 }
@@ -20,8 +27,4 @@ bool MainWindow::initWindow() {
 void MainWindow::drawWindow() {
 	wborder(_window, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
 	wrefresh(_window);
-}
-
-MainWindow::~MainWindow() {
-	// empty
 }
